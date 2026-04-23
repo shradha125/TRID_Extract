@@ -3,14 +3,14 @@
 ## What this is
 A reproducible pipeline that turns a TRID-exported `.docx` of freight-simulation papers into a reviewable Excel matrix of research findings, method characteristics, policy focus, geography, and inferred ML/AI gaps.
 
-Run on your two TRID exports (120 publications + 2 projects), the pipeline produced **`trid_review_matrix.xlsx`** — 119 papers coded across 17 columns, with filters and a summary sheet.
+Run on your two TRID exports across 17 columns, with filters and a summary sheet.
 
 ## Files
 
 | File | Purpose |
 |---|---|
 | `parse_trid.py` | Parses TRID `.docx` into structured records (title, authors, year, abstract, venue, keywords). Handles quirks: flush-left author lines, missing fields on old records, pre-2000 years. |
-| `records_clean.json` | 119 cleaned records from your two input files. |
+| `records_clean.json` |  cleaned records from your two input files. |
 | `extractions.py` | Hand-curated research-content extraction (17-column schema) for the current 119 records. |
 | `extract_via_api.py` | Reusable Anthropic API script: replaces `extractions.py` for new TRID exports. Uses Sonnet 4.5, strict JSON schema, moderate stance on ML gaps. Supports resume. |
 | `build_excel.py` | Assembles the Excel workbook from `records_clean.json` + `extractions.py` (or the JSON produced by `extract_via_api.py`). |
